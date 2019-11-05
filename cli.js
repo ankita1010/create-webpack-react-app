@@ -1,12 +1,18 @@
 #!/usr/bin/env node
-const chalk = require('chalk');
 const fs = require('fs');
+
+const chalk = require('chalk');
+const validation = require('./util/validation');
 const HTML_TEMPLATE = require('./templates/indexHTML');
 const [, , ...args] = process.argv;
 if (args.length) {
-    console.log(chalk.green(`You have entered a name ${args}`));
-    fs.mkdirSync('./' + args[0]);
-    fs.writeFileSync(`${args[0]}/index.html`,HTML_TEMPLATE)
+	fs.mkdirSync('./' + args[0]);
+	fs.writeFileSync(`${args[0]}/index.html`,HTML_TEMPLATE);
+	const nameIsValid = validation.validateName(args);
+	if (!nameIsValid)
+		console.log(chalk.red(`\nPlease enter a valid name, no special characters allowed!\n`));
+	else
+		console.log(chalk.green(`\nYou have entered a name ${args}\n`));
 }
 else
-    console.log(chalk.red('Please enter a name'));
+	console.log(chalk.red('\nPlease enter a name\n'));
