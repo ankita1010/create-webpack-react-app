@@ -1,10 +1,8 @@
 #!/usr/bin/env node
-const fs = require('fs');
-
 const chalk = require('chalk');
 
-const validation = require('./util/validation');
-const setUpFiles = require('./util/fileSetup');
+const validation = require('./src/util/validation');
+const setupFiles = require('./src/setupFiles');
 
 const [, , ...args] = process.argv;
 
@@ -13,7 +11,7 @@ if (args.length) {
 	if (!nameIsValid) {
 		console.log(chalk.red(`\nPlease enter a valid name, no special characters allowed!\n`));
 	} else {
-		setUpFiles(nameIsValid)
+		setupFiles(`${__dirname}/${nameIsValid}`, nameIsValid);
 	}
 } else {
 	console.log(chalk.red('\nPlease enter a name\n'));
