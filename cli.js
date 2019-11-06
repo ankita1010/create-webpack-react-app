@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const fs = require('fs');
+
 const childProcess = require('child_process');
 
 const chalk = require('chalk');
@@ -15,7 +15,7 @@ if (args.length) {
 		console.log(chalk.red(`\nPlease enter a valid name, no special characters allowed!\n`));
 	else
 		{
-			setUpFiles(nameIsValid)
+			setUpFiles(`${__dirname}/${nameIsValid}`)
 		}
 }
 else
