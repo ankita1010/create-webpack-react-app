@@ -1,6 +1,5 @@
 module.exports = (projectName) => (
 	{
-
 		name: projectName,
 		version: "1.0.0",
 		description: 'This project is created using react and webpack',
