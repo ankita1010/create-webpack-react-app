@@ -28,7 +28,6 @@ const styleString = `,
 						}
 					]
 				}`;
-
 const generateWebpack = (dirname, dependencies, { styleFlag }) => {
   const vendorLibraries = `const VENDOR_LIBS = [${dependencies
     .map(dep => `"${dep}"`)

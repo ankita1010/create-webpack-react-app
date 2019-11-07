@@ -1,7 +1,8 @@
 const webpackConfig = `const config = function (env) {
+  	const isProduction = env === 'production';
 	return {
-		mode: env.production ? "production" : "development",
-		devtool: env.production ? "none" : "cheap-module-eval-source-map",
+		mode: isProduction ? "production" : "development",
+		devtool: isProduction ? "none" : "cheap-module-eval-source-map",
 		entry: {
 			bundle: ["@babel/polyfill", "./src/index.js"],
 			vendor: VENDOR_LIBS
@@ -9,7 +10,7 @@ const webpackConfig = `const config = function (env) {
 		output: {
 			path: path.resolve(__dirname, "build"),
 			//saves the output of webpack in the project directory
-			filename: "[name]-[contenthash].js"
+			filename: isProduction ? "js/[name].[hash:8].chunk.js" : "js/[name].js"
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
@@ -38,6 +39,8 @@ const webpackConfig = `const config = function (env) {
 		devServer: {
 			contentBase: "./build",
 			host: "localhost",
+			open: true,
+			watch: true,
 			historyApiFallback: true,
 		},
 		module: {
