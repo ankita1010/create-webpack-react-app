@@ -14,7 +14,7 @@ const setupFiles = async (dirname, nameString) => {
 
 	generateSkeleton(dirname, nameString);
 	generatePublic(dirname, nameString);
-	generateSource(dirname);
+	generateSource(dirname, answers);
 
 	generateBabel(dirname);
 

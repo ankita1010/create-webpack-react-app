@@ -1,4 +1,7 @@
-import React from 'React';
+module.exports = function(hasSass) {
+return(`import React from 'React';
+
+import './App.${hasSass?'s':''}css';
 
 const App = () => {
 	return (
@@ -7,4 +10,5 @@ const App = () => {
 		</div>
 	)
 };
-export default App;
+export default App;`)
+}
