@@ -4,10 +4,11 @@
   "description": "A command line to to initiate a boilerplate for a react application using webpack and babel",
   "main": "cli.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"cleantest": "rm -rf demo && create-webpack-react-app demo"
   },
   "bin": {
-    "yo-yo": "./cli.js"
+    "create-webpack-react-app": "./cli.js"
   },
   "repository": {
     "type": "git",
