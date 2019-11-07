@@ -9,24 +9,25 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const manifestJson = require('./src/manifest.json');
 `;
 const exportString = `
-		]
+			]
+		}
 	}
 }
 module.exports = config;
 `;
 const styleString = `,
-			{
-				test: /\.scss$/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					{
-						loader: "css-loader"
-					},
-					{
-						loader: "sass-loader"
-					}
-				]
-			}`;
+				{
+					test: /\.scss$/,
+					use: [
+						MiniCssExtractPlugin.loader,
+						{
+							loader: "css-loader"
+						},
+						{
+							loader: "sass-loader"
+						}
+					]
+				}`;
 
 const generateWebpack = (dirname, dependencies, { styleFlag }) => {
   const vendorLibraries = `const VENDOR_LIBS = [${dependencies
