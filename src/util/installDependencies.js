@@ -1,3 +1,5 @@
+const spawn = require('child_process').spawnSync;
+
 const installDependencies = ({
 	dependencies,
 	devFlag,
@@ -19,7 +21,7 @@ const installDependencies = ({
 		'error',
 	].concat(dependencies);
 
-	// spawn(command, arguments, { stdio: 'inherit', cwd: directory });
+	spawn(command, arguments, { stdio: 'inherit', cwd: directory });
 }
 
 module.exports = installDependencies;

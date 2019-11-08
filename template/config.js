@@ -14,8 +14,8 @@ const webpackConfig = `const config = function (env) {
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				template: "./src/index.html",
-				favicon: './src/hero-image.jpg'
+				template: "./public/index.html",
+				//favicon: './src/hero-image.jpg'  //add your website shortcut icon here
 			}),
 			new MiniCssExtractPlugin({
 				filename: "styles/[name].built.css"
@@ -40,7 +40,6 @@ const webpackConfig = `const config = function (env) {
 			contentBase: "./build",
 			host: "localhost",
 			open: true,
-			watch: true,
 			historyApiFallback: true,
 		},
 		module: {
@@ -49,19 +48,6 @@ const webpackConfig = `const config = function (env) {
 					test: /\.js$/,
 					exclude: /node_modules/,
 					use: "babel-loader"
-				},
-				{
-					test: /\.html$/,
-					use: { loader: 'html-loader' }
-				},
-				{
-					test: /\.css$/,
-					use: [
-						MiniCssExtractPlugin.loader,
-						{
-							loader: "css-loader"
-						}
-					]
 				},
 				{
 					test: /\.(json)/,

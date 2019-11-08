@@ -1,11 +1,11 @@
 const fs = require('fs');
 const generateManifestTemp = require('../../template/manifest');
 
-const generatePublic = (dirname, nameString) => {
+const generatePublic = (dirname, nameString, workingDirectory) => {
 	fs.mkdirSync(`${dirname}/public`);
 	const publicFileNames = ['index.html', 'index.css'];
 	publicFileNames.forEach(filename => {
-		fs.copyFileSync(`./template/public/${filename}`, `${dirname}/public/${filename}`)
+		fs.copyFileSync(`${workingDirectory}/template/public/${filename}`, `${dirname}/public/${filename}`)
 	});
 
 	// adding manifest.json

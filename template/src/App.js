@@ -1,5 +1,5 @@
 module.exports = function(hasSass) {
-return(`import React from 'React';
+return(`import React from 'react';
 
 import './App.${hasSass?'s':''}css';
 

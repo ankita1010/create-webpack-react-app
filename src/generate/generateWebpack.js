@@ -15,36 +15,32 @@ const exportString = `
 }
 module.exports = config;
 `;
-const styleString = `,
+const SASS_REGEX = /.(css|scss)$/;
+const CSS_REGEX = /.css$/;
+
+const generateWebpack = (dirname, dependencies, { styleFlag }) => {
+	const styleString = `,
 				{
-					test: /\.scss$/,
+					test: ${styleFlag ? SASS_REGEX : CSS_REGEX},
 					use: [
 						MiniCssExtractPlugin.loader,
-						{
-							loader: "css-loader"
-						},
-						{
-							loader: "sass-loader"
-						}
+						{ loader: "css-loader" }${styleFlag ? ',\n{ loader: "sass-loader" }' : ''}
 					]
 				}`;
-const generateWebpack = (dirname, dependencies, { styleFlag }) => {
-  const vendorLibraries = `const VENDOR_LIBS = [${dependencies
-    .map(dep => `"${dep}"`)
-    .join(", ")}];`;
+	const vendorLibraries = `const VENDOR_LIBS = [${dependencies
+		.map(dep => `"${dep}"`)
+		.join(", ")}];`;
 
 	let rules = '';
-  if (styleFlag) {
-    rules = `${rules}${styleString}`;
-  }
-  const jsData = new Uint8Array(
-    Buffer.from(
-      `${requireString}
+	rules = `${rules}${styleString}`;
+	const jsData = new Uint8Array(
+		Buffer.from(
+			`${requireString}
 ${vendorLibraries}
 ${config}${rules}${exportString}`
-    )
-  );
-  fs.writeFileSync(`${dirname}/webpack.config.js`, jsData);
+		)
+	);
+	fs.writeFileSync(`${dirname}/webpack.config.js`, jsData);
 };
 
 module.exports = generateWebpack;

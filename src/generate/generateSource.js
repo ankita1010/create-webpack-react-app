@@ -3,7 +3,7 @@ const AppJsConfig = require('../../template/src/App');
 const AppStyleConfig = require('../../template/src/AppStyle');
 const IndexConfig = require('../../template/src/index');
 
-const generateSource = (dirname, answers) => {
+const generateSource = (dirname, answers, workingDirectory) => {
 	fs.mkdirSync(`${dirname}/src`);
 	const srcFilesDetails = [
 		{
@@ -25,18 +25,6 @@ const generateSource = (dirname, answers) => {
 			data: IndexConfig(answers.reduxFlag)
 		}
 	];
-	if (answers.reduxFlag) {
-		srcFilesDetails.push({
-			templateName: 'Store.js',
-			isBuffered: false,
-			destinationName: 'Store.js',
-			data: ''
-		});
-		const reduxFileNames = [ 'rootReducer.js', 'actionTypes.js']
-		reduxFileNames.forEach(fileName => {
-			// fs.copyFileSync(`../../template/src/redux/${fileName}`, `${dirname}/src/redux/${fileName}`)
-		})
-	}
 	
 	srcFilesDetails.forEach(fileDetails => {
 		const { templateName, isBuffered, destinationName, data } = fileDetails;
@@ -47,7 +35,7 @@ const generateSource = (dirname, answers) => {
 			fs.writeFileSync(`${dirname}/src/${destinationName}`, fileBufferedData)
 		}
 		else
-			fs.copyFileSync(`./template/src/${templateName}`, `${dirname}/src/${destinationName}`)
+			fs.copyFileSync(`${workingDirectory}/template/src/${templateName}`, `${dirname}/src/${destinationName}`)
 	})
 }
 

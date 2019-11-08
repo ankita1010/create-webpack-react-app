@@ -11,7 +11,7 @@ if (args.length) {
 	if (!nameIsValid) {
 		console.log(chalk.red(`\nPlease enter a valid name, no special characters allowed!\n`));
 	} else {
-		setupFiles(`${__dirname}/${nameIsValid}`, nameIsValid);
+		setupFiles(`${process.cwd()}/${nameIsValid}`, nameIsValid, __dirname);
 	}
 } else {
 	console.log(chalk.red('\nPlease enter a name\n'));

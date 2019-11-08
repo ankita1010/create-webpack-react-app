@@ -1,34 +1,34 @@
 {
-  "name": "create-webpack-react-app",
-  "version": "1.0.0",
-  "description": "A command line to to initiate a boilerplate for a react application using webpack and babel",
-  "main": "cli.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-	"cleantest": "rm -rf demo && create-webpack-react-app demo"
-  },
-  "bin": {
-    "create-webpack-react-app": "./cli.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ankita1010/create-webpack-react-app.git"
-  },
-  "keywords": [
-    "webpack",
-    "react.",
-    "babel"
-  ],
-  "author": "Himayan Debnath, Ankita Chakraborty",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ankita1010/create-webpack-react-app/issues"
-  },
-  "homepage": "https://github.com/ankita1010/create-webpack-react-app#readme",
-  "dependencies": {
-    "chalk": "^2.4.2",
-    "clui": "^0.3.6",
-    "inquirer": "^7.0.0",
-    "minimist": "^1.2.0"
-  }
+	"name": "create-webpack-react-app",
+	"version": "1.0.0",
+	"description": "A command line to to initiate a boilerplate for a react application using webpack and babel",
+	"main": "cli.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"cleantest": "rm -rf demo && create-webpack-react-app demo"
+	},
+	"bin": {
+		"create-webpack-react-app": "./cli.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ankita1010/create-webpack-react-app.git"
+	},
+	"keywords": [
+		"webpack",
+		"react.",
+		"babel"
+	],
+	"author": "Himayan Debnath, Ankita Chakraborty",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ankita1010/create-webpack-react-app/issues"
+	},
+	"homepage": "https://github.com/ankita1010/create-webpack-react-app#readme",
+	"dependencies": {
+		"chalk": "^2.4.2",
+		"clui": "^0.3.6",
+		"inquirer": "^7.0.0",
+		"minimist": "^1.2.0"
+	}
 }

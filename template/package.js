@@ -8,7 +8,7 @@ module.exports = (projectName) => (
 			build: 'webpack -mode=production',
 			devbuild: 'webpack -mode=development'
 		},
-		browserlist: {
+		browserslist: {
 			"production": [
 				">0.2%",
 				"not dead",
