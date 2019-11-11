@@ -19,12 +19,14 @@ const SASS_REGEX = /.(css|scss)$/;
 const CSS_REGEX = /.css$/;
 
 const generateWebpack = (dirname, dependencies, { styleFlag }) => {
+	const scssString = `,
+						{ loader: "sass-loader" }`
 	const styleString = `,
 				{
 					test: ${styleFlag ? SASS_REGEX : CSS_REGEX},
 					use: [
 						MiniCssExtractPlugin.loader,
-						{ loader: "css-loader" }${styleFlag ? ',\n{ loader: "sass-loader" }' : ''}
+						{ loader: "css-loader" }${styleFlag ? scssString : ''}
 					]
 				}`;
 	const vendorLibraries = `const VENDOR_LIBS = [${dependencies

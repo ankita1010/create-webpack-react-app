@@ -7,6 +7,7 @@ const getDevDependencies = ({
 		'@babel/polyfill',
 		'@babel/preset-react',
 		'@babel/preset-env',
+		"@babel/plugin-proposal-class-properties",
 		'babel-loader',
 		'css-loader',
 		'html-webpack-plugin',
