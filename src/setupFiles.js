@@ -17,9 +17,10 @@ const setupFiles = async (dirname, nameString, workingDirectory) => {
 	generateSkeleton(dirname, nameString);
 	generatePublic(dirname, nameString, workingDirectory);
 	generateSource(dirname, answers, workingDirectory);
-	
-	if(answers.reduxFlag);
-	generateReduxSetup(dirname, workingDirectory);
+
+	if (answers.reduxFlag) {
+		generateReduxSetup(dirname, workingDirectory);
+	}
 
 	generateBabel(dirname, workingDirectory);
 
