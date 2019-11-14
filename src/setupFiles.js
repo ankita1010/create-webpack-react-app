@@ -48,7 +48,17 @@ const setupFiles = async (dirname, nameString, workingDirectory) => {
 		devFlag: false,
 		directory: dirname
 	});
+	console.log(chalk.green(`
+	To run your project - 
 
+
+		$ cd ${nameString}
+		$ npm start
+
+
+	Happy coding fella!!
+	
+	`))
 }
 
 module.exports = setupFiles;
