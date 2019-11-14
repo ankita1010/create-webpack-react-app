@@ -15,6 +15,7 @@ const fs = require('fs');
 const setupFiles = async (dirname, nameString, workingDirectory) => {
 	const answers = await askProjectDetails();
 	const hasDir = fs.existsSync(`${dirname}`);
+	console.log(process.version)
 	if (hasDir) {
 		console.log(chalk.red(`\nA directory named ${nameString} already exists in the current path. Please enter some other name\n\n`));
 		process.exit()
