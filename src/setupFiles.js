@@ -11,15 +11,17 @@ const getDependencies = require('./util/getDependencies');
 const getDevDependencies = require('./util/getDevDependencies');
 const chalk = require('chalk');
 const fs = require('fs');
+const validation = require('./util/validation');
 
 const setupFiles = async (dirname, nameString, workingDirectory) => {
-	const answers = await askProjectDetails();
-	const hasDir = fs.existsSync(`${dirname}`);
-	console.log(process.version)
-	if (hasDir) {
-		console.log(chalk.red(`\nA directory named ${nameString} already exists in the current path. Please enter some other name\n\n`));
+	const dirAlreadyExists = fs.existsSync(`${dirname}`);
+	const nodeVersion = process.version;
+	const isNodeIncompatible = parseFloat(nodeVersion.substr(1, 5)) < 7;
+	if (dirAlreadyExists || isNodeIncompatible) {
+		console.log(chalk.red(validation.throwErrorMessage(isNodeIncompatible, nameString)));
 		process.exit()
 	}
+	const answers = await askProjectDetails();
 	generateSkeleton(dirname, nameString);
 	generatePublic(dirname, nameString, workingDirectory);
 	generateSource(dirname, answers, workingDirectory);
