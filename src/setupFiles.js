@@ -10,10 +10,15 @@ const askProjectDetails = require('./util/askProjectDetails');
 const getDependencies = require('./util/getDependencies');
 const getDevDependencies = require('./util/getDevDependencies');
 const chalk = require('chalk');
+const fs = require('fs');
 
 const setupFiles = async (dirname, nameString, workingDirectory) => {
 	const answers = await askProjectDetails();
-
+	const hasDir = fs.existsSync(`${dirname}`);
+	if (hasDir) {
+		console.log(chalk.red(`\nA directory named ${nameString} already exists in the current path. Please enter some other name\n\n`));
+		process.exit()
+	}
 	generateSkeleton(dirname, nameString);
 	generatePublic(dirname, nameString, workingDirectory);
 	generateSource(dirname, answers, workingDirectory);
