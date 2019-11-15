@@ -1,9 +1,10 @@
 const fs = require('fs');
-const generateManifestTemp = require('../../template/manifest');
+const generateManifestTemp = require('../template/manifest');
 
 const generatePublic = (dirname, nameString, workingDirectory) => {
 	fs.mkdirSync(`${dirname}/public`);
 	const publicFileNames = ['index.html', 'index.css'];
+	console.log(workingDirectory)
 	publicFileNames.forEach(filename => {
 		fs.copyFileSync(`${workingDirectory}/template/public/${filename}`, `${dirname}/public/${filename}`)
 	});

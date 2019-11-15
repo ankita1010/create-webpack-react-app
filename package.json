@@ -5,10 +5,12 @@
 	"main": "cli.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"cleantest": "rm -rf demo && create-webpack-react-app demo"
+		"cleantest": "rm -rf demo && create-webpack-react-app demo",
+		"build": "rm -rf lib && babel ./src --out-dir lib --ignore ./src/template --copy-files"
 	},
 	"bin": {
-		"create-webpack-react-app": "./cli.js"
+		"create-webpack-react-app": "./src/cli.js",
+		"babel-test": "./lib/cli.js"
 	},
 	"repository": {
 		"type": "git",
@@ -30,5 +32,11 @@
 		"clui": "^0.3.6",
 		"inquirer": "^7.0.0",
 		"minimist": "^1.2.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.7.0",
+		"@babel/core": "^7.7.2",
+		"@babel/polyfill": "^7.7.0",
+		"@babel/preset-env": "^7.7.1"
 	}
 }
