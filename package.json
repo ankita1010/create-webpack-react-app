@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"cleantest": "rm -rf demo && create-webpack-react-app demo",
-		"build": "rm -rf lib && babel ./src --out-dir lib --ignore ./src/template --copy-files"
+		"build": "rm -rf lib && babel ./src --out-dir lib --ignore ./src/template --copy-files  --include-dotfiles"
 	},
 	"bin": {
 		"create-webpack-react-app": "./src/cli.js",

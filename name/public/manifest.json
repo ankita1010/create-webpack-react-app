@@ -1,8 +1,0 @@
-{
-  "name": "name",
-  "short_name": "name",
-  "display": "standalone",
-  "start_url": "localhost:8080",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}
