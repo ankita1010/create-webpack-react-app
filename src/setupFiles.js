@@ -21,6 +21,9 @@ const setupFiles = async (dirname, nameString, workingDirectory) => {
 		console.log(chalk.red(validation.throwErrorMessage(isNodeIncompatible, nameString)));
 		process.exit()
 	}
+	console.log(chalk.cyanBright(`
+ Hola!😄 Please take a moment to answer a few questions..
+	`))
 	const answers = await askProjectDetails();
 	generateSkeleton(dirname, nameString);
 	generatePublic(dirname, nameString, workingDirectory);
@@ -29,12 +32,14 @@ const setupFiles = async (dirname, nameString, workingDirectory) => {
 	if (answers.reduxFlag) {
 		generateReduxSetup(dirname, workingDirectory);
 	}
+	//TO DO
 
+	//add url-loader
 	generateBabel(dirname, workingDirectory);
 
 	const dependencies = getDependencies(answers);
 
-	console.log(chalk.green('\nInstalling dependencies. This might take a while..\n\n'));
+	console.log(chalk.green('\nInstalling dependencies. This might take a while..😴\n\n'));
 
 	generateWebpack(dirname, dependencies, answers);
 	const devDependencies = getDevDependencies(answers);
@@ -55,10 +60,12 @@ const setupFiles = async (dirname, nameString, workingDirectory) => {
 		$ cd ${nameString}
 		$ npm start
 
-
-	Happy coding fella!!
+	`))
+	console.log(chalk.yellowBright(`
+	💻 Happy coding fella! 😎
 	
 	`))
+
 }
 
 module.exports = setupFiles;
