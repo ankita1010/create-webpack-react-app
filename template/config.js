@@ -58,14 +58,12 @@ const webpackConfig = `const config = function (env) {
 					}],
 				},
 				{
-					test: /\.(jpe?g|png|gif|svg|ogg|mp3)$/,
-					use: [
-						{
-							loader: 'url-loader',
-							options: {
-								limit: 8192,
-							},
-						},
-					],
+					test: /\.(jpg|png|ogg|mp3)$/,
+					use: {
+						loader: "file-loader",
+						options: {
+							name: "static/media/[name].[hash:8].[ext]"
+						}
+					}
 				}`;
 module.exports = webpackConfig;

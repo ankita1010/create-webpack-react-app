@@ -21,7 +21,6 @@ const getDevDependencies = ({
 
 	return ([
 		...devDependencies,
-		...imageDependencies,
 		...styleDependencies
 	]);
 }
