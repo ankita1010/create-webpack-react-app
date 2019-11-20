@@ -32,9 +32,7 @@ const setupFiles = async (dirname, nameString, workingDirectory) => {
 	if (answers.reduxFlag) {
 		generateReduxSetup(dirname, workingDirectory);
 	}
-	//TO DO
-
-	//add url-loader
+	
 	generateBabel(dirname, workingDirectory);
 
 	const dependencies = getDependencies(answers);
