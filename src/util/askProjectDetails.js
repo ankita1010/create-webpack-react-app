@@ -11,7 +11,7 @@ const askProjectDetails = () => {
 		{
 			type: 'confirm',
 			name: 'styleFlag',
-			message: 'Do you want to use scss for styling?',
+			message: 'Do you want to use SASS for styling?',
 			default: false
 		}
 	];
