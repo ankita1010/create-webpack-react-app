@@ -1,27 +1,27 @@
-const generateSkeleton = require('./generate/generateSkeleton');
-const generatePublic = require('./generate/generatePublic');
-const generateSource = require('./generate/generateSource');
-const generateBabel = require('./generate/generateBabel');
-const generateWebpack = require('./generate/generateWebpack');
-const generateReduxSetup = require('./generate/generateReduxSetup');
+import generateSkeleton from './generate/generateSkeleton';
+import generatePublic from './generate/generatePublic';
+import generateSource from './generate/generateSource';
+import generateBabel from './generate/generateBabel';
+import generateWebpack from './generate/generateWebpack';
+import generateReduxSetup from './generate/generateReduxSetup';
 
-const installDependencies = require('./util/installDependencies');
-const askProjectDetails = require('./util/askProjectDetails');
-const getDependencies = require('./util/getDependencies');
-const getDevDependencies = require('./util/getDevDependencies');
-const chalk = require('chalk');
-const fs = require('fs');
-const validation = require('./util/validation');
+import installDependencies from './util/installDependencies';
+import askProjectDetails from './util/askProjectDetails';
+import getDependencies from './util/getDependencies';
+import getDevDependencies from './util/getDevDependencies';
+import { red, cyanBright, green, yellowBright } from 'chalk';
+import { existsSync } from 'fs';
+import { throwErrorMessage } from './util/validation';
 
 const setupFiles = async (dirname, nameString, workingDirectory) => {
-	const dirAlreadyExists = fs.existsSync(`${dirname}`);
+	const dirAlreadyExists = existsSync(`${dirname}`);
 	const nodeVersion = process.version;
 	const isNodeIncompatible = parseFloat(nodeVersion.substr(1, 5)) < 7;
 	if (dirAlreadyExists || isNodeIncompatible) {
-		console.log(chalk.red(validation.throwErrorMessage(isNodeIncompatible, nameString)));
+		console.log(red(throwErrorMessage(isNodeIncompatible, nameString)));
 		process.exit()
 	}
-	console.log(chalk.cyanBright(`
+	console.log(cyanBright(`
  Hola!😄 Please take a moment to answer a few questions..
 	`))
 	const answers = await askProjectDetails();
@@ -37,7 +37,7 @@ const setupFiles = async (dirname, nameString, workingDirectory) => {
 
 	const dependencies = getDependencies(answers);
 
-	console.log(chalk.green('\nInstalling dependencies. This might take a while..😴\n\n'));
+	console.log(green('\nInstalling dependencies. This might take a while..😴\n\n'));
 
 	generateWebpack(dirname, dependencies, answers);
 	const devDependencies = getDevDependencies(answers);
@@ -51,7 +51,7 @@ const setupFiles = async (dirname, nameString, workingDirectory) => {
 		devFlag: false,
 		directory: dirname
 	});
-	console.log(chalk.green(`
+	console.log(green(`
 	To run your project - 
 
 
@@ -59,11 +59,11 @@ const setupFiles = async (dirname, nameString, workingDirectory) => {
 		$ npm start
 
 	`))
-	console.log(chalk.yellowBright(`
+	console.log(yellowBright(`
 	💻 Happy coding fella! 😎
 	
 	`))
 
 }
 
-module.exports = setupFiles;
+export default setupFiles;

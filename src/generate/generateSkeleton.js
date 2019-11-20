@@ -1,13 +1,13 @@
-const fs = require('fs');
-const path = require('path')
-const generatePackJsonTemp = require('../template/package');
+import { mkdirSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
+import generatePackJsonTemp from '../template/package';
 
 const generateSkeleton = (dir, name) => {
-	fs.mkdirSync(path.resolve(dir));
+	mkdirSync(resolve(dir));
 	const packJsonData = JSON.stringify(generatePackJsonTemp(name), null, 2);
-	fs.writeFileSync(`${dir}/package.json`, packJsonData, err => {
+	writeFileSync(`${dir}/package.json`, packJsonData, err => {
 		console.log(err)
 	});
 }
 
-module.exports = generateSkeleton;
+export default generateSkeleton;

@@ -13,4 +13,4 @@ const getDependencies = ({
 	]);
 }
 
-module.exports = getDependencies;
+export default getDependencies;

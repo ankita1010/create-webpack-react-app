@@ -1,7 +1,7 @@
-const fs = require('fs');
+import { copyFileSync } from 'fs';
 
 const generateBabel = (dirname, workingDirectory) => {
-	fs.copyFileSync(`${workingDirectory}/template/.babelrc`, `${dirname}/.babelrc`);
+	copyFileSync(`${workingDirectory}/template/.babelrc`, `${dirname}/.babelrc`);
 }
 
-module.exports = generateBabel;
+export default generateBabel;

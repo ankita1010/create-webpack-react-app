@@ -1,4 +1,4 @@
-const inquirer = require('inquirer');
+import { prompt } from 'inquirer';
 
 const askProjectDetails = () => {
 	const questions = [
@@ -11,11 +11,11 @@ const askProjectDetails = () => {
 		{
 			type: 'confirm',
 			name: 'styleFlag',
-			message: 'Do you want to use scss for styling?',
+			message: 'Do you want to use SASS for styling?',
 			default: false
 		}
 	];
-	return inquirer.prompt(questions);
+	return prompt(questions);
 }
 
-module.exports = askProjectDetails;
+export default askProjectDetails;
