@@ -14,7 +14,7 @@ const getDevDependencies = ({
 		'webpack-cli',
 		'webpack-dev-server',
 		'mini-css-extract-plugin',
-		'url-loader',
+		'file-loader',
 		'webpack-manifest-plugin'
 	];
 	const styleDependencies = styleFlag ? ['node-sass', 'sass-loader']: [];
@@ -25,4 +25,4 @@ const getDevDependencies = ({
 	]);
 }
 
-module.exports = getDevDependencies;
+export default getDevDependencies;

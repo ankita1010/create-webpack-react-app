@@ -9,7 +9,8 @@
 		"build": "rm -rf lib && babel ./src --out-dir lib --ignore ./src/template --copy-files  --include-dotfiles"
 	},
 	"bin": {
-		"create-webpack-react-app": "./lib/cli.js"
+		"webpack-react-init": "./lib/cli.js",
+		"dev-test": "./src/cli.js"
 	},
 	"repository": {
 		"type": "git",

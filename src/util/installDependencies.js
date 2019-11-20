@@ -1,4 +1,4 @@
-const spawn = require('child_process').spawnSync;
+import { spawnSync as spawn } from 'child_process';
 
 const installDependencies = ({
 	dependencies,
@@ -20,8 +20,7 @@ const installDependencies = ({
 		'--loglevel',
 		'error',
 	].concat(dependencies);
-
 	spawn(command, cp_arguments, { stdio: 'inherit', cwd: directory });
 }
 
-module.exports = installDependencies;
+export default installDependencies;

@@ -1,19 +1,36 @@
-const fs = require('fs');
-const generateManifestTemp = require('../template/manifest');
+import { mkdirSync, copyFileSync, writeFileSync } from "fs";
+import generateManifestTemp from "../template/manifest";
 
 const generatePublic = (dirname, nameString, workingDirectory) => {
-	fs.mkdirSync(`${dirname}/public`);
-	const publicFileNames = ['index.html', 'index.css'];
-	console.log(workingDirectory)
+	mkdirSync(`${dirname}/public`);
+	mkdirSync(`${dirname}/public/assets`);
+	const publicFileNames = ["index.html", "index.css"];
 	publicFileNames.forEach(filename => {
-		fs.copyFileSync(`${workingDirectory}/template/public/${filename}`, `${dirname}/public/${filename}`)
+		copyFileSync(
+			`${workingDirectory}/template/public/${filename}`,
+			`${dirname}/public/${filename}`
+		);
 	});
+	//copying images
+	copyFileSync(
+		`${workingDirectory}/template/public/assets/webpack.png`,
+		`${dirname}/public/assets/webpack.png`
+	);
+
+	copyFileSync(
+		`${workingDirectory}/template/public/assets/react.png`,
+		`${dirname}/public/assets/react.png`
+	);
 
 	// adding manifest.json
-	const manifestData = JSON.stringify(generateManifestTemp(nameString), null, 2);
-	fs.writeFileSync(`${dirname}/public/manifest.json`, manifestData, err => {
-		console.log(err)
+	const manifestData = JSON.stringify(
+		generateManifestTemp(nameString),
+		null,
+		2
+	);
+	writeFileSync(`${dirname}/public/manifest.json`, manifestData, err => {
+		console.log(err);
 	});
-}
+};
 
-module.exports = generatePublic;
+export default generatePublic;

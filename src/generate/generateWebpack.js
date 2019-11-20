@@ -1,5 +1,5 @@
-const fs = require("fs");
-const config = require("../template/config");
+import { writeFileSync } from "fs";
+import config from "../template/config";
 
 const requireString = `
 const path = require("path");
@@ -42,7 +42,7 @@ ${vendorLibraries}
 ${config}${rules}${exportString}`
 		)
 	);
-	fs.writeFileSync(`${dirname}/webpack.config.js`, jsData);
+	writeFileSync(`${dirname}/webpack.config.js`, jsData);
 };
 
-module.exports = generateWebpack;
+export default generateWebpack;

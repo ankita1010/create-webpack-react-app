@@ -1,10 +1,10 @@
-const fs = require('fs');
-const AppJsConfig = require('../template/src/App');
-const AppStyleConfig = require('../template/src/AppStyle');
-const IndexConfig = require('../template/src/index');
+import { mkdirSync, writeFileSync, copyFileSync } from 'fs';
+import AppJsConfig from '../template/src/App';
+import AppStyleConfig from '../template/src/AppStyle';
+import IndexConfig from '../template/src/index';
 
 const generateSource = (dirname, answers, workingDirectory) => {
-	fs.mkdirSync(`${dirname}/src`);
+	mkdirSync(`${dirname}/src`);
 	const srcFilesDetails = [
 		{
 			templateName: 'App.js',
@@ -32,11 +32,11 @@ const generateSource = (dirname, answers, workingDirectory) => {
 			const fileBufferedData = new Uint8Array(
 				Buffer.from(`${data}`)
 			);
-			fs.writeFileSync(`${dirname}/src/${destinationName}`, fileBufferedData)
+			writeFileSync(`${dirname}/src/${destinationName}`, fileBufferedData)
 		}
 		else
-			fs.copyFileSync(`${workingDirectory}/src/template/src/${templateName}`, `${dirname}/src/${destinationName}`)
+			copyFileSync(`${workingDirectory}/src/template/src/${templateName}`, `${dirname}/src/${destinationName}`)
 	})
 }
 
-module.exports = generateSource;
+export default generateSource;
