@@ -1,5 +1,4 @@
 const getDevDependencies = ({
-		imageOptiFlag,
 		styleFlag
 	}) => {
 	const devDependencies = [
@@ -15,15 +14,13 @@ const getDevDependencies = ({
 		'webpack-cli',
 		'webpack-dev-server',
 		'mini-css-extract-plugin',
-		'file-loader',
+		'url-loader',
 		'webpack-manifest-plugin'
 	];
-	const imageDependencies = imageOptiFlag ? ['url-loader'] : [];
 	const styleDependencies = styleFlag ? ['node-sass', 'sass-loader']: [];
 
 	return ([
 		...devDependencies,
-		...imageDependencies,
 		...styleDependencies
 	]);
 }
