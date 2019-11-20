@@ -5,7 +5,7 @@ import './App.${hasSass?'s':''}css';
 
 const App = () => {
 	return (
-		<div>
+		<div className="app-block">
 			<h1>Welcome to Webpack configured React App</h1>
 		</div>
 	)
