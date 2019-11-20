@@ -6,7 +6,7 @@ const installDependencies = ({
 	directory
 }) => {
 	const command = 'npm';
-	const arguments = devFlag ?
+	const cp_arguments = devFlag ?
 	[
 		'install',
 		'--save-dev',
@@ -21,7 +21,7 @@ const installDependencies = ({
 		'error',
 	].concat(dependencies);
 
-	spawn(command, arguments, { stdio: 'inherit', cwd: directory });
+	spawn(command, cp_arguments, { stdio: 'inherit', cwd: directory });
 }
 
 module.exports = installDependencies;

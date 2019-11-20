@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const chalk = require('chalk');
-
-const validation = require('./src/util/validation');
-const setupFiles = require('./src/setupFiles');
+import '@babel/polyfill'
+const validation = require('./util/validation');
+const setupFiles = require('./setupFiles');
 
 const [, , ...args] = process.argv;
 
