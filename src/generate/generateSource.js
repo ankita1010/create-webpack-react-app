@@ -1,7 +1,7 @@
 const fs = require('fs');
-const AppJsConfig = require('../../template/src/App');
-const AppStyleConfig = require('../../template/src/AppStyle');
-const IndexConfig = require('../../template/src/index');
+const AppJsConfig = require('../template/src/App');
+const AppStyleConfig = require('../template/src/AppStyle');
+const IndexConfig = require('../template/src/index');
 
 const generateSource = (dirname, answers, workingDirectory) => {
 	fs.mkdirSync(`${dirname}/src`);
@@ -35,7 +35,7 @@ const generateSource = (dirname, answers, workingDirectory) => {
 			fs.writeFileSync(`${dirname}/src/${destinationName}`, fileBufferedData)
 		}
 		else
-			fs.copyFileSync(`${workingDirectory}/template/src/${templateName}`, `${dirname}/src/${destinationName}`)
+			fs.copyFileSync(`${workingDirectory}/src/template/src/${templateName}`, `${dirname}/src/${destinationName}`)
 	})
 }
 

@@ -1,5 +1,5 @@
 const fs = require("fs");
-const config = require("../../template/config");
+const config = require("../template/config");
 
 const requireString = `
 const path = require("path");

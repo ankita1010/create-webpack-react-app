@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path')
-const generatePackJsonTemp = require('../../template/package');
+const generatePackJsonTemp = require('../template/package');
 
 const generateSkeleton = (dir, name) => {
 	fs.mkdirSync(path.resolve(dir));
