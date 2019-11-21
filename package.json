@@ -1,6 +1,6 @@
 {
 	"name": "create-webpack-react-app",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "A command line to to initiate a boilerplate for a react application using webpack and babel.\nTo run the CLI, install the CLI globally by running \n$ npm i -g create-webpack-react-app \nand go to the directory where you want the root directory of your project to be and then run create-webpack-react-app project-name.\n",
 	"main": "cli.js",
 	"scripts": {
@@ -31,12 +31,12 @@
 	"homepage": "https://github.com/ankita1010/create-webpack-react-app#readme",
 	"dependencies": {
 		"chalk": "^2.4.2",
-		"clui": "^0.3.6",
 		"inquirer": "^7.0.0",
-		"minimist": "^1.2.0",
+		"@babel/polyfill": "^7.7.0"
+	},
+	"devDependencies": {
+		"@babel/preset-env": "^7.7.1",
 		"@babel/cli": "^7.7.0",
-		"@babel/core": "^7.7.2",
-		"@babel/polyfill": "^7.7.0",
-		"@babel/preset-env": "^7.7.1"
+		"@babel/core": "^7.7.2"
 	}
 }
