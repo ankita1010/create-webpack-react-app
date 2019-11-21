@@ -14,5 +14,5 @@ if (args.length) {
 		setupFiles(`${process.cwd()}/${nameIsValid}`, nameIsValid, __dirname);
 	}
 } else {
-	console.log(red('\nPlease enter a name\n'));
+	console.log(red('\nPlease enter a project name\n'));
 }
