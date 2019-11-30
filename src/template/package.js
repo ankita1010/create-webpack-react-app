@@ -5,8 +5,8 @@ module.exports = (projectName) => (
 		description: 'This project is created using react and webpack',
 		scripts: {
 			start: 'webpack-dev-server',
-			build: 'webpack -env=production',
-			devbuild: 'webpack -env=development'
+			build: 'webpack --env=production',
+			devbuild: 'webpack --env=development'
 		},
 		browserslist: {
 			"production": [
