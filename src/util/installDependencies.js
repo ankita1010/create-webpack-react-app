@@ -20,7 +20,7 @@ const installDependencies = ({
 		'--loglevel',
 		'error',
 	].concat(dependencies);
-	spawn(command, cp_arguments, { stdio: 'inherit', cwd: directory });
+	spawn(command, cp_arguments, { stdio: 'inherit', cwd: directory, shell: true });
 }
 
 export default installDependencies;
